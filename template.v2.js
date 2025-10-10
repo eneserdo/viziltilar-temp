@@ -8923,77 +8923,102 @@ p small {
   const headerTemplate = `
 <style>
 distill-header {
-  position: relative;
-  height: 60px;
-  background-color: hsl(200, 60%, 15%);
+  position: sticky;
+  top: 0;
+  background-color: #1a365d;
   width: 100%;
   box-sizing: border-box;
-  z-index: 2;
-  color: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+  color: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
 }
 distill-header .content {
-  height: 70px;
-  grid-column: page;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 4rem;
 }
-distill-header a {
-  font-size: 16px;
-  height: 60px;
-  line-height: 60px;
+distill-header .logo {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.8);
-  padding: 22px 0;
+  height: auto;
+  line-height: normal;
+  padding: 0;
 }
-distill-header a:hover {
-  color: rgba(255, 255, 255, 1);
+distill-header .logo-icon {
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  margin-right: 0.5rem;
+}
+distill-header .nav {
+  display: flex;
+  gap: 2rem;
+  float: none;
+  font-weight: 500;
+}
+distill-header .nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  margin-left: 0;
+  text-transform: none;
+  height: auto;
+  line-height: normal;
+  padding: 0;
+}
+distill-header .nav a:hover {
+  opacity: 0.8;
+}
+distill-header .nav a.active {
+  opacity: 0.8;
+  border-bottom: 2px solid white;
 }
 distill-header svg {
-  width: 24px;
-  position: relative;
-  top: 4px;
-  margin-right: 2px;
+  display: none;
+}
+@media (max-width: 768px) {
+  distill-header {
+    padding: 1rem 0;
+    height: auto;
+  }
+  distill-header .content {
+    padding: 0 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  distill-header .nav {
+    gap: 1.5rem;
+  }
 }
 @media(min-width: 1080px) {
   distill-header {
-    height: 70px;
+    /* Height will be determined by content */
   }
-  distill-header a {
-    height: 70px;
-    line-height: 70px;
-    padding: 28px 0;
-  }
-  distill-header .logo {
-  }
-}
-distill-header svg path {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.8);
-  stroke-width: 3px;
-}
-distill-header .logo {
-  font-size: 17px;
-  font-weight: 200;
-}
-distill-header .nav {
-  float: right;
-  font-weight: 300;
-}
-distill-header .nav a {
-  font-size: 12px;
-  margin-left: 24px;
-  text-transform: uppercase;
 }
 </style>
 <div class="content">
-  <a href="/" class="logo">
-    ${logo}
+  <a href="../../index.html" class="logo">
+    <div class="logo-icon"></div>
     Vızıltılar
   </a>
   <nav class="nav">
-    <a href="/about/">About</a>
-    <a href="/prize/">Prize</a>
-    <a href="/journal/">Submit</a>
+    <a href="../../about.html">Hakkımızda</a>
   </nav>
 </div>
 `;
